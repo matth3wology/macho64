@@ -48,17 +48,17 @@ correct_message:
     exit
 
 string_convert:
-        xor rax, rax ;; Zero out rax
-        mov rcx,  10 ;; rcx is used for base 10
+    xor rax, rax ;; Zero out rax
+    mov rcx,  10 ;; rcx is used for base 10
 next:
-	    cmp [rsi], byte 0 ;; compare the first byte of rsi
-	    je return_str ;; Return if zero
-	    mov bl, [rsi] ;; move one byte of rsi into a one byte register
-        sub bl, 48 ;; convert string to int
-	    mul rcx ;; multiply rax by 10 ex: 3 to 30
-	    add rax, rbx ;; add rbx ro rax
-	    inc rsi ;; move to the next byte of rsi
-	    jmp next ;; loop
+	cmp [rsi], byte 0 ;; compare the first byte of rsi
+	je return_str ;; Return if zero
+	mov bl, [rsi] ;; move one byte of rsi into a one byte register
+    sub bl, 48 ;; convert string to int
+	mul rcx ;; multiply rax by 10 ex: 3 to 30
+	add rax, rbx ;; add rbx ro rax
+	inc rsi ;; move to the next byte of rsi
+	jmp next ;; loop
 
 return_str:
 	    ret
