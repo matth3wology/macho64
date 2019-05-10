@@ -18,14 +18,17 @@ start:
     cmp r10, 2
     jl error_message
 
+    ;;Pop argv[1] and convert to int
     add rsp, 8
     pop rsi
-    call str_to_int
+    call string_convert
 
+    ;;Compare the argument with 4
     mov r10, rax
     cmp r10, 4
     je correct_message
 
+    ;;Exit Program
     exit
 
 error_message:
@@ -44,18 +47,18 @@ correct_message:
     syscall
     exit
 
-str_to_int:
-        xor rax, rax
-        mov rcx,  10
+string_convert:
+        xor rax, rax ;; Zero out rax
+        mov rcx,  10 ;; rcx is used for base 10
 next:
-	    cmp [rsi], byte 0
-	    je return_str
-	    mov bl, [rsi]
-            sub bl, 48
-	    mul rcx
-	    add rax, rbx
-	    inc rsi
-	    jmp next
+	    cmp [rsi], byte 0 ;; compare the first byte of rsi
+	    je return_str ;; Return if zero
+	    mov bl, [rsi] ;; move one byte of rsi into a one byte register
+        sub bl, 48 ;; convert string to int
+	    mul rcx ;; multiply rax by 10 ex: 3 to 30
+	    add rax, rbx ;; add rbx ro rax
+	    inc rsi ;; move to the next byte of rsi
+	    jmp next ;; loop
 
 return_str:
 	    ret
