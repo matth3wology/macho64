@@ -1,10 +1,12 @@
 SYS_WRITE equ 0x2000004
 SYS_EXIT equ 0x2000001
 
-global start
 
 section .text
+global start
+
 start:
+    ; Hello World Program
     mov rax, SYS_WRITE
     mov rdi, 1
     mov rsi, msg, 
@@ -17,6 +19,6 @@ start:
 
 section .data
 
-    msg db 'Connecting..',10
+    msg db 'Hello World!',10
 
 
