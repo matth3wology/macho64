@@ -4,8 +4,8 @@ SYS_EXIT equ 0x2000001
 
 %macro exit 0
     mov rax, SYS_EXIT
-        mov rdi, 0
-        syscall
+    mov rdi, 0
+    syscall
 %endmacro
 
 global start
