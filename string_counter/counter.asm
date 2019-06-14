@@ -3,8 +3,8 @@
 
 %macro exit 0
     mov rax, SYS_EXIT
-        mov rdi, 0
-        syscall
+    mov rdi, 0
+    syscall
 %endmacro
 
 count_string:

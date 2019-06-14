@@ -3,7 +3,7 @@ all:
 
 
 run:
-	./main.o
+	./main
 
 
 clean:
