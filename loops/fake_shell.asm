@@ -20,13 +20,11 @@
 %endmacro
 
 %macro read 1
-
     mov rax, 0x2000003
     mov rdi, 0
     mov rsi, %1
     mov rdx, 30
     syscall
-
 %endmacro
 ;;Fake Shell Program.
 section .text
