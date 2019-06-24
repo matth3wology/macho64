@@ -79,6 +79,8 @@ section .text
         ;Prologue
         prologue
 
+        jmp [rbp+8]
+
         ;Function Body
         print [rbp+16]
         print [rbp+24]

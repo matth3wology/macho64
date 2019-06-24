@@ -1,6 +1,6 @@
 %include "counter.asm"
 
-    global start
+global start
 
 section .text
 
