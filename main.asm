@@ -1,12 +1,13 @@
 global start
 section .text
 start:
-    call open_file
 
-    mov r10, 10
+    call open_file ; Open File
+
+    mov r9, 10    ; Number of times to write message (10)
 loop:
-    cmp r10, 0
-    je done
+    cmp r9, 0
+    je done       ; Break loop if R9=0
 
     mov rax, 0x2000004 ; 'write' syscall
     mov rdi, [rel fd] ; file descriptor
@@ -14,9 +15,9 @@ loop:
     mov rdx, buffer.length ; buffer string length
     syscall
 
-    dec r10
+    dec r9
     jmp loop
-mov r10, 10
+
 done:
     call close_file
     call exit
