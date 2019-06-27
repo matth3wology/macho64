@@ -36,6 +36,7 @@ global start
 
 start:
     
+    mov  [AMDF + System.name],db "LMAO"
     system_print AMDF
     system_print D12D
 
